@@ -11,5 +11,6 @@ class AssetsConstants {
     static let background = "background"
     static let primaryColor = "primaryColor"
     static let sunIcon = "sunIcon"
-    
+    static let contrastColor = "contrastColor"
+    static let softGray = "softGray"
 }
