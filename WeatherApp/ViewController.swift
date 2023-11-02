@@ -27,7 +27,20 @@ class ViewController: UIViewController {
         
         
         return view;
-    }();
+    }()
+    
+    
+    private lazy var statsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [humidityStackView, windStackView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        stackView.backgroundColor = UIColor(named: AssetsConstants.softGray)
+        stackView.layer.cornerRadius = 10
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+        return stackView
+    }()
     
     private lazy var cityLabel: UILabel = {
         let label = UILabel()
@@ -36,7 +49,7 @@ class ViewController: UIViewController {
         label.textColor = UIColor(named: AssetsConstants.primaryColor)
         label.text = "Belo Horizonte"
         label.textAlignment = .center
-    
+        
         return label;
     }();
     
@@ -47,7 +60,7 @@ class ViewController: UIViewController {
         label.textColor = UIColor(named: AssetsConstants.primaryColor)
         label.text = "25ºC"
         label.textAlignment = .left
-    
+        
         return label;
     }();
     
@@ -60,6 +73,61 @@ class ViewController: UIViewController {
         
         return imageView;
     }();
+    
+    private lazy var humidityLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false;
+        label.font = .systemFont(ofSize: 20, weight: .semibold);
+        label.textColor = UIColor(named: AssetsConstants.contrastColor)
+        label.text = "Humidade"
+        return label;
+    }();
+    
+    private lazy var humidityValueLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false;
+        label.font = .systemFont(ofSize: 20, weight: .semibold);
+        label.textColor = UIColor(named: AssetsConstants.contrastColor)
+        label.text = "1000mm"
+        return label;
+    }();
+    
+    private lazy var humidityStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [humidityLabel, humidityValueLabel])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+//        stack.distribution = .fillEqually
+        return stack;
+    }()
+    
+    
+    private lazy var windLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false;
+        label.font = .systemFont(ofSize: 20, weight: .semibold);
+        label.textColor = UIColor(named: AssetsConstants.contrastColor)
+        label.text = "Vento"
+        return label;
+    }();
+    
+    private lazy var windValueLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false;
+        label.font = .systemFont(ofSize: 20, weight: .semibold);
+        label.textColor = UIColor(named: AssetsConstants.contrastColor)
+        label.text = "10km/h"
+        return label;
+    }();
+    
+    private lazy var windStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [windLabel, windValueLabel])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+//        stack.distribution = .fillEqually
+        return stack;
+    }()
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +145,12 @@ class ViewController: UIViewController {
     private func setHierarchy(){
         view.addSubview(backgroundView);
         view.addSubview(headerView);
+        view.addSubview(statsStackView)
         headerView.addSubview(cityLabel);
         headerView.addSubview(temperatureLabel);
         headerView.addSubview(weatherIcon);
-        
+//        humidityStackView.addArrangedSubview(humidityLabel)
+//        humidityStackView.addArrangedSubview(humidityValueLabel)
     }
     
     private func setConstraints(){
@@ -88,7 +158,7 @@ class ViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor ),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor ),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor ) 
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor )
         ]);
         
         NSLayoutConstraint.activate([
@@ -101,7 +171,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             cityLabel.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 15),
             cityLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor,constant: 15),
-            cityLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15), 
+            cityLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
             cityLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
@@ -116,6 +186,17 @@ class ViewController: UIViewController {
             weatherIcon.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -26),
             weatherIcon.centerYAnchor.constraint(equalTo: temperatureLabel.centerYAnchor),
             weatherIcon.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 15),
+        ])
+        
+        
+        NSLayoutConstraint.activate([
+            statsStackView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 24),
+            statsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            statsStackView.widthAnchor.constraint(equalToConstant: 250),
+//            statsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
+//            statsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
+          
+            
         ])
     }
     
