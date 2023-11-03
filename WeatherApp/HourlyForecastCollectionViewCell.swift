@@ -31,7 +31,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 10, weight: .semibold)
         label.text = "13:00"
         label.textAlignment = .center
-        label.textColor = UIColor(named: AssetsConstants.contrastColor)
+        label.textColor = UIColor.contrastColor
         return label
     }()
     
