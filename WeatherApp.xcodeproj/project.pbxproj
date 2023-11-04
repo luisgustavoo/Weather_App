@@ -17,6 +17,7 @@
 		6EB2419E2AF09A7A0098130B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EB2419C2AF09A7A0098130B /* Main.storyboard */; };
 		6EB241A02AF09A7B0098130B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EB2419F2AF09A7B0098130B /* Assets.xcassets */; };
 		6EB241A32AF09A7B0098130B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EB241A12AF09A7B0098130B /* LaunchScreen.storyboard */; };
+		6EB6DC072AF5E7CC00E4E2B5 /* UiView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB6DC062AF5E7CC00E4E2B5 /* UiView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6EB2419F2AF09A7B0098130B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EB241A22AF09A7B0098130B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EB241A42AF09A7B0098130B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EB6DC062AF5E7CC00E4E2B5 /* UiView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				6E7DBFFC2AF48A6F006AF551 /* DayliForecastTableViewCell.swift */,
 				6E7DBFF82AF45684006AF551 /* Color+Extensions.swift */,
 				6E7DBFFA2AF45957006AF551 /* Image+Extensions.swift */,
+				6EB6DC062AF5E7CC00E4E2B5 /* UiView+Extensions.swift */,
 				6EB2419C2AF09A7A0098130B /* Main.storyboard */,
 				6EB2419F2AF09A7B0098130B /* Assets.xcassets */,
 				6EB241A12AF09A7B0098130B /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				6E7DBFFD2AF48A6F006AF551 /* DayliForecastTableViewCell.swift in Sources */,
 				6E7DBFFB2AF45957006AF551 /* Image+Extensions.swift in Sources */,
 				6EB241992AF09A7A0098130B /* SceneDelegate.swift in Sources */,
+				6EB6DC072AF5E7CC00E4E2B5 /* UiView+Extensions.swift in Sources */,
 				6E7DBFF72AF44922006AF551 /* HourlyForecastCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

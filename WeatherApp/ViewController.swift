@@ -174,9 +174,10 @@ class ViewController: UIViewController {
     private lazy var dailyForescastTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear  
         tableView.dataSource = self
         tableView.register(DayliForecastTableViewCell.self, forCellReuseIdentifier: DayliForecastTableViewCell.identifier)
+        tableView.separatorColor = UIColor.contrastColor
         return tableView
     }()
     
@@ -216,7 +217,7 @@ class ViewController: UIViewController {
             headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
-            headerView.heightAnchor.constraint(equalToConstant: 169)
+            headerView.heightAnchor.constraint(equalToConstant: 150)
         ]);
         
         NSLayoutConstraint.activate([
@@ -228,7 +229,7 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
-            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 21)
+            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 12)
         ])
         
         NSLayoutConstraint.activate([
@@ -264,7 +265,7 @@ class ViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            dailyForescastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 30),
+            dailyForescastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 10 ),
             dailyForescastTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dailyForescastTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dailyForescastTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
