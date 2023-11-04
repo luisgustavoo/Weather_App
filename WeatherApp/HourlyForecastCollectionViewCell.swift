@@ -31,7 +31,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 10, weight: .semibold)
         label.text = "13:00"
         label.textAlignment = .center
-        label.textColor = UIColor(named: AssetsConstants.contrastColor)
+        label.textColor = UIColor.contrastColor
         return label
     }()
     
@@ -75,12 +75,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
     }
     
     private func setContrants(){
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        stackView.setConstraintToParent(contentView)
         
         NSLayoutConstraint.activate([
             iconImageView.heightAnchor.constraint(equalToConstant: 33)

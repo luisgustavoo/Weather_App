@@ -11,6 +11,14 @@ class ViewController: UIViewController {
     
     
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpView();
+    }
+    
+    
+    
     private lazy var backgroundView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false;
@@ -127,7 +135,7 @@ class ViewController: UIViewController {
         return stack;
     }()
     
-
+    
     private lazy var hourlyForecastLabel: UILabel = {
         let label = UILabel();
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -152,10 +160,28 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpView();
-    }
+    
+    private lazy var dailyForecastLabel: UILabel = {
+        let label = UILabel();
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "PRÓXIMOS DIAS"
+        label.textColor = UIColor.contrastColor
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        return label
+    }()
+    
+    
+    private lazy var dailyForescastTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear  
+        tableView.dataSource = self
+        tableView.register(DayliForecastTableViewCell.self, forCellReuseIdentifier: DayliForecastTableViewCell.identifier)
+        tableView.separatorColor = UIColor.contrastColor
+        return tableView
+    }()
+    
+    
     
     private func setUpView(){
         view.backgroundColor = UIColor.red;
@@ -171,6 +197,8 @@ class ViewController: UIViewController {
         view.addSubview(statsStackView)
         view.addSubview(hourlyForecastLabel)
         view.addSubview(hourlyCollectionView)
+        view.addSubview(dailyForecastLabel)
+        view.addSubview(dailyForescastTableView)
         
         headerView.addSubview(cityLabel);
         headerView.addSubview(temperatureLabel);
@@ -189,7 +217,7 @@ class ViewController: UIViewController {
             headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35),
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35),
-            headerView.heightAnchor.constraint(equalToConstant: 169)
+            headerView.heightAnchor.constraint(equalToConstant: 150)
         ]);
         
         NSLayoutConstraint.activate([
@@ -201,7 +229,7 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             temperatureLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 26),
-            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 21)
+            temperatureLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 12)
         ])
         
         NSLayoutConstraint.activate([
@@ -230,6 +258,18 @@ class ViewController: UIViewController {
             hourlyCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             hourlyCollectionView.heightAnchor.constraint(equalToConstant: 84),
         ])
+        
+        NSLayoutConstraint.activate([
+            dailyForecastLabel.topAnchor.constraint(equalTo: hourlyCollectionView.bottomAnchor, constant: 29),
+            dailyForecastLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dailyForescastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 10 ),
+            dailyForescastTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            dailyForescastTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dailyForescastTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     
@@ -242,6 +282,18 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCollectionViewCell.identifier, for: indexPath)
+        return cell
+    }
+}
+
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DayliForecastTableViewCell.identifier, for: indexPath)
         return cell
     }
 }

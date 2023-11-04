@@ -12,4 +12,5 @@ import UIKit
 extension UIImage {
     static let backgroundImageView = UIImage(named: "background")
     static let sunIconImageView = UIImage(named: "sunIcon")
+    static let cloudIconImageView = UIImage(named: "cloudIcon")
 }
