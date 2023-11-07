@@ -181,13 +181,17 @@ class ViewController: UIViewController {
         return tableView
     }()
     
-    
+    let service = Service()
     
     private func setUpView(){
         view.backgroundColor = UIColor.red;
         
         setHierarchy();
         setConstraints();
+        
+        service.fetchData(city: City(lat: "-19.912998", long: "-43.940933", name: "Belo Horizonte")) { mensagem in
+            print(mensagem)
+        }
         
     }
     
